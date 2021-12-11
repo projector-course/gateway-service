@@ -1,6 +1,5 @@
 const { getModuleLogger } = require('../../services/logService');
 const { findService } = require('./findService');
-const { VerificationError, VERIFICATION_ERROR_TYPE } = require('../../errors/verificationError');
 const { proxy } = require('../../utils/proxy');
 
 const logger = getModuleLogger(module);
@@ -12,7 +11,7 @@ async function proxyService(options) {
   } = options;
 
   const service = await findService({ prefix });
-  if (!service) throw new VerificationError(VERIFICATION_ERROR_TYPE.NOT_FOUND_ERROR);
+  if (!service) return null;
 
   const url = `${service.url}${path}${search}`;
   logger.debug(url);
