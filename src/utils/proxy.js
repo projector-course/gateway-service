@@ -6,7 +6,7 @@ function proxy(options) {
     .catch((e) => {
       const { response, request } = e;
       if (response) return response;
-      if (request) throw new HttpRequestError(REQUEST_ERROR_TYPE.NETWORK_ERROR, 503, 'Service Unavailable');
+      if (request) throw new HttpRequestError(REQUEST_ERROR_TYPE.NETWORK_ERROR, 'Service Unavailable', 503);
       throw e;
     });
 }

@@ -8,12 +8,20 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       prefix: {
+        allowNull: false,
         type: Sequelize.STRING,
+        unique: true,
       },
       url: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      token: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {

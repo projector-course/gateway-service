@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon src",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "nodemon --inspect src"
+    "debug": "nodemon --inspect src",
+    "token": "node src/utils/generateToken.js"
   },
   "repository": {
     "type": "git",
@@ -27,12 +28,14 @@
   "dependencies": {
     "@koa/router": "^10.1.1",
     "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
     "dotenv-defaults": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
+    "pg": "^8.7.1",
     "pino": "^7.2.0",
     "pino-pretty": "^7.2.0",
-    "pg": "^8.7.1",
     "sequelize": "^6.12.0-alpha.1"
   }
 }

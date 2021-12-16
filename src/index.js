@@ -3,6 +3,8 @@ const { getModuleLogger } = require('./services/logService');
 const { errorHandler } = require('./middlewares/errorHandler');
 const { getMetrics } = require('./middlewares/getMetrics');
 const { koaLogger } = require('./middlewares/koaLogger');
+const { isUserAuth } = require('./middlewares/isUserAuth');
+const { isPrivateRequest } = require('./middlewares/isPrivateRequest');
 const { proxyServiceRoute } = require('./api/routes/proxyServiceRoute');
 const { router } = require('./api/router');
 const { PORT, BASE_URL, SERVICE_NAME } = require('./services/configService');
@@ -14,6 +16,8 @@ new Koa()
   .use(errorHandler)
   .use(getMetrics)
   .use(koaLogger)
+  .use(isUserAuth)
+  .use(isPrivateRequest)
   .use(proxyServiceRoute)
   .use(router.routes())
   .use(router.allowedMethods())

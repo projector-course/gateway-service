@@ -7,7 +7,7 @@ logger.debug('CONTROLLER CREATED');
 
 async function proxyService(options) {
   const {
-    prefix, path, search, ...reqOptions
+    isAuth, prefix, path, search, headers, ...reqOptions
   } = options;
 
   const service = await findService({ prefix });
@@ -16,7 +16,10 @@ async function proxyService(options) {
   const url = `${service.url}${path}${search}`;
   logger.debug(url);
 
-  return proxy({ ...reqOptions, url });
+  const headersWithToken = { ...headers };
+  if (isAuth) Object.assign(headersWithToken, { 'x-service-token': service.token });
+
+  return proxy({ ...reqOptions, url, headers: headersWithToken });
 }
 
 module.exports = { proxyService };
