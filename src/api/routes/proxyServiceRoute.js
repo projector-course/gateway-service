@@ -11,9 +11,6 @@ async function proxyServiceRoute(ctx, next) {
   const prefix = match[1];
   if (!prefix) return next();
 
-  const { 'x-service-token': serviceToken } = headers;
-  const isAuth = Boolean(user) || Boolean(serviceToken);
-
   const res = await proxyService({
     path,
     search,
@@ -21,7 +18,7 @@ async function proxyServiceRoute(ctx, next) {
     method,
     headers,
     data,
-    isAuth,
+    user,
   });
 
   if (!res) return next();
