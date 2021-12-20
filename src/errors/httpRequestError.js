@@ -5,7 +5,7 @@ const REQUEST_ERROR_TYPE = {
 };
 
 class HttpRequestError extends Error {
-  constructor(errorType, status = 400, message = '') {
+  constructor(errorType, message, status) {
     super(message);
     this.type = errorType;
     this.status = status;

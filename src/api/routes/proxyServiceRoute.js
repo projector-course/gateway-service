@@ -2,7 +2,7 @@ const { proxyService } = require('../controllers/proxyService');
 
 async function proxyServiceRoute(ctx, next) {
   const {
-    path, search, method, headers, req: data,
+    path, search, method, headers, req: data, user,
   } = ctx;
 
   ctx.log.debug('ROUTE: %s', path);
@@ -18,6 +18,7 @@ async function proxyServiceRoute(ctx, next) {
     method,
     headers,
     data,
+    user,
   });
 
   if (!res) return next();
