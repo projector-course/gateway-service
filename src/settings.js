@@ -21,9 +21,12 @@ const LOGGER_TARGET = {
   STDOUT: 'stdout',
 };
 
+const AMQP_EXCHANGE_TYPE = 'direct';
+
 module.exports = {
   SERVICE_STATUS,
   STAGE,
   LOGGER_TARGET,
   LOGGER_LEVEL,
+  AMQP_EXCHANGE_TYPE,
 };
