@@ -50,10 +50,10 @@ module.exports = (sequelize, DataTypes) => {
     static readCacheOrDb() {
       if (!this.redis) {
         this.redis = redis.init();
-        return Services.readDb();
+        return this.readDb();
       }
 
-      if (this.redis.status !== 'ready') return Services.readDb();
+      if (this.redis.status !== 'ready') return this.readDb();
 
       return this.redis
         .get(DATA_KEY)
@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
         })
         .catch((e) => {
           logger.error(e);
-          return Services.readDb();
+          return this.readDb();
         });
     }
   }
