@@ -1,5 +1,4 @@
 const { getModuleLogger } = require('../../services/logService');
-const { findService } = require('./findService');
 const { SERVICE_KEY } = require('../../services/configService');
 const { proxy } = require('../../utils/proxy');
 
@@ -8,11 +7,8 @@ logger.debug('CONTROLLER CREATED');
 
 async function proxyService(options) {
   const {
-    user, prefix, path, search, headers, ...reqOptions
+    user, prefix, path, search, headers, service, ...reqOptions
   } = options;
-
-  const service = await findService({ prefix });
-  if (!service) return null;
 
   const url = `${service.url}${path}${search}`;
   logger.debug(url);
