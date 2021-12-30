@@ -7,12 +7,9 @@ const { isUserAuth } = require('./middlewares/isUserAuth');
 const { proxyServiceRoute } = require('./api/routes/proxyServiceRoute');
 const { router } = require('./api/router');
 const { PORT, BASE_URL, SERVICE_NAME } = require('./services/configService');
-const { initAmqp } = require('./services/amqp');
 
 const logger = getModuleLogger(module);
 logger.debug('APP CREATED');
-
-initAmqp();
 
 new Koa()
   .use(errorHandler)
