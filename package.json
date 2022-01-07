@@ -29,6 +29,7 @@
     "@koa/router": "^10.1.1",
     "axios": "^0.24.0",
     "dotenv-defaults": "^3.0.0",
+    "ioredis": "^4.28.2",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "pg": "^8.7.1",
